@@ -1,0 +1,119 @@
+#root {
+  margin: 0 auto;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+
+.desktopbg {
+  width: 100vw;
+  height: 100vh;
+  background-color: #816429;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  bottom: 0;
+  z-index: 0;
+  left: 0;
+}
+.desktopcontainer {
+  z-index: 1;
+  width: calc(100vw - 30px);
+  height: calc(100vh - 75px);
+  margin: 8px 15px 60px 15px;
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(10, 60px); /* 10 columns, each 10% of screen width */
+  grid-template-rows: repeat(10, 5vw);  /* 10 rows, each height matching the width (using viewport width units) */
+  gap: 32px; 
+}
+
+.taskbar {
+  width: 100vw;
+  height: 45px;
+  background-color: #2a2721;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid rgba(128, 128, 128, 0.322);
+}
+
+
+/* .desktopicon {
+  background-color: none;
+  display: flex;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./assets/DesktopIcons/PixelShark.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+.desktopicon:hover {
+  background-color: rgba(219, 219, 219, 0.185);
+  border-radius: 3px;
+}
+
+.menutext {
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.menutext:hover {
+    background-color: rgba(128, 128, 128, 0.123);
+    border-radius: 5px;
+
+  }
+
+  .windowsicon {
+    width: 42px;
+    height: 42px;
+
+  }
+
+  .windowsicon:hover {
+    background-color: rgba(82, 82, 82, 0.644);
+    width: 42px;
+    height: 42px;
+    border-radius: 3px;
+    border: 10px solid rgba(37, 37, 37, 0.281);
+
+  }
+
