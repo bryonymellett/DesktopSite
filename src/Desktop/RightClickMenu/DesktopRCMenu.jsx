@@ -30,7 +30,7 @@ function DesktopRCMenu({mousePosition, selectWallpaper}) {
         className="menutext" 
         style={styles.menutext}
         onMouseEnter ={() => setHovered(true)}>
-            Wallpaper
+            Desktop Wallpaper
         </p>
     </div>
     {hovered && <Wallpapers mousePosition={mousePosition} selectWallpaper={selectWallpaper}/>}

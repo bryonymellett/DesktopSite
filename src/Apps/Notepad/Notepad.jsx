@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Notepad() {
+function Notepad({openApp}) {
   const [value, setValue] = useState("");
   const [textLength, setTextLength] = useState(0);
   const [position, setPosition] = useState({ x: 100, y: 100 }); // Initial position of Notepad window
@@ -25,9 +25,9 @@ function Notepad() {
       borderRadius: '10px',
       border: '1px solid rgba(128, 128, 128, 0.322)',
       display: 'flex',
-      position: 'absolute', // Allow absolute positioning for dragging
-      left: `${position.x}px`, // Set position dynamically
-      top: `${position.y}px`, // Set position dynamically
+      position: 'absolute', 
+      left: `${position.x}px`, 
+      top: `${position.y}px`, 
       cursor: 'move', // Change cursor to indicate drag mode
     },
     containerFlex: {
@@ -57,7 +57,9 @@ function Notepad() {
       width: '90px',
       height: '35px',
       justifyContent: 'space-between',
-      right: '0px',
+      position: 'absolute',
+      right: '0',
+      paddingRight: '10px',
     },
     toolbar: {
       height: '38px',
@@ -76,7 +78,7 @@ function Notepad() {
       width: '100%',
     },
     textarea: {
-      width: '100%',
+      width: '95%',
       height: '100%',
       outline: 'none',
       padding: '15px',
@@ -86,17 +88,30 @@ function Notepad() {
       textAlignVertical: 'top',
       fontSize: '15px',
     },
+    iconImage: {
+          width: '60px',
+          height: '60px',
+          backgroundImage: `url('./src/assets/Icons/NewPage.png')`,
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+    },
     footer: {
       height: '20px',
       width: '100%',
       backgroundColor: '#2c2c2c',
       fontSize: '11px',
     },
+    
   };
 
   const countCharacters = (e) => {
     setValue(e.target.value);
     setTextLength(value.length);
+  };
+
+  const closeNotepad = () => {
+    openApp();
   };
 
   // Handle the start of the drag
@@ -143,13 +158,13 @@ function Notepad() {
     >
       <div style={styles.containerFlex}>
         <div style={styles.titlebar}>
-          <div>I</div>
+          <div> FILE ICON</div>
           <div style={styles.tab}>Untitled X</div>
           <div style={styles.tab}>+</div>
           <div style={styles.screencontrols}>
-            <div>-</div>
-            <div>sq</div>
-            <div>x</div>
+            <div onClick={closeNotepad}>🗕</div>
+            <div onClick={maximiseNotepad}>🗖</div>
+            <div onClick={closeNotepad}>x</div>
           </div>
         </div>
         <div style={styles.toolbar}>

@@ -36,10 +36,11 @@ function Taskbar() {
             <div 
             style={styles.trayicon}
             className="windowsicon"
-            >                            
+   
+            >Start                            
             </div>
-            <div style={styles.trayicon}></div>
-            <div style={styles.trayicon}></div>
+            <div style={styles.trayicon}>ppp</div>
+            <div style={styles.trayicon}>qqq</div>
 
         </div>
 

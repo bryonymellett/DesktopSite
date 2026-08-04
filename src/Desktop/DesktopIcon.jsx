@@ -57,7 +57,7 @@ function DesktopIcon({app}) {
                 </div>
         </div>
         {/* {appOpened && "You've opened the app!"} */}
-        {appOpened && <AppComponent/>}
+        {appOpened && <AppComponent openApp={openApp}/>}
         </>
     )
 }
