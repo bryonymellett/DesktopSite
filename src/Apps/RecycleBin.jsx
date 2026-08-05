@@ -32,7 +32,7 @@ function RecycleBin({openApp, setOpenApps}) {
       position: 'absolute', 
       left: isMaximized ? '0px' : `${position.x}px`, 
       top: isMaximized ? '0px' : `${position.y}px`, 
-      cursor: 'move', // Change cursor to indicate drag mode
+      cursor: 'move', 
     },
     containerFlex: {
       width: '100%',
@@ -254,7 +254,7 @@ function RecycleBin({openApp, setOpenApps}) {
             <div key={i} style={styles.file}>
               <div style={styles.icon}></div>
               <span style={styles.fileName}>
-                Apple core {i + 1}
+                , breadstick packet, rat {i + 1}
               </span>
             </div>
           ))}

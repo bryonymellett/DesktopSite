@@ -8,23 +8,18 @@ const apps = [
     { name: 'SharkData', image: './src/assets/DesktopIcons/PixelShark.png'},
     { name: 'Notepad', image: './src/assets/DesktopIcons/NewPage.png', component: Notepad },
     { name: 'Folder1', image: './src/assets/DesktopIcons/Folder.png', component: Folder},
-    { name: 'Settings', image: './assets/DesktopIcons/Settings.png' },
+    { name: 'Folder2', image: './src/assets/DesktopIcons/Folder.png', component: Folder},
+    { name: 'Folder3', image: './src/assets/DesktopIcons/Folder.png', component: Folder},
     { name: 'README.md', image: './assets/DesktopIcons/Settings.png' },
-    { name: 'Linkedin', image: './assets/DesktopIcons/Settings.png' },
-    { name: 'Github', image: './assets/DesktopIcons/Settings.png' },
-    { name: 'Terminal', image: './assets/DesktopIcons/Settings.png' },
+    { name: 'Linkedin', image: './src/assets/DesktopIcons/LinkedIn.png' },
+    { name: 'Github', image: './src/assets/DesktopIcons/GitHub.png' },
+    { name: 'Terminal', image: './src/assets/DesktopIcons/Terminal.png' },
     { name: 'About/CV', image: './assets/DesktopIcons/Settings.png' },
     { name: 'Calculator', image: './assets/DesktopIcons/Settings.png' },
-    { name: 'Calendar', image: './assets/DesktopIcons/Settings.png', component: NotWordle },
-    { name: 'NotWordle', image: './assets/DesktopIcons/Settings.png' },
+    { name: 'Calendar', image: './src/assets/DesktopIcons/CalendarIcon.png' },
+    { name: 'NotWordle', image: './assets/DesktopIcons/Settings.png', component: NotWordle },
     { name: 'Is it David Attenborough?', image: './assets/DesktopIcons/Settings.png' },
-    { name: 'Paint', image: './assets/DesktopIcons/Settings.png' },
-
-// Tamagotchi
-
-
-
-
+    { name: 'Paint', image: './src/assets/DesktopIcons/Paint.png' },
 
   ];
   

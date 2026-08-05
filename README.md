@@ -19,6 +19,7 @@ paint
 terminal
 is it david attenborough?
 // Tamagotchi
+plant a tree
 
 
 

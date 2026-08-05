@@ -43,6 +43,7 @@ function DesktopIcon({app, setOpenApps}) {
         iconDescription: {
             fontSize: '11.5px',
             textShadow: '3px 2px 2px rgb(0, 0, 0)',
+            cursor: 'default'
         }
 
       };

@@ -10,8 +10,6 @@ function App() {
   const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
   const [wallpaperPath, setWallpaperPath] = useState('./src/assets/Wallpapers/Whale.jpg');
   const [openApps, setOpenApps] = useState([]);
-  
-
   const [appList, setAppList] = useState(apps)
 
   useEffect(() => {

@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import NotepadContent from './NotepadContent';
+import NotepadTab from './NotepadTab';
+import notepadDataset from '../../data/NotepadDataset';
 
 function Notepad({openApp, setOpenApps}) {
   const [isOpen, setisOpen] = useState(0)
   const [value, setValue] = useState("");
+  const [tabTitle, setTabTitle] = useState("");
   const [textLength, setTextLength] = useState(0);
   const [position, setPosition] = useState({ x: 100, y: 100 }); // Initial position of Notepad window
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 }); // Store the drag offset
   const [isMaximized, setIsMaximized] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [notepadData, setNotepadData] = useState(notepadDataset);
+  const [activeTab, setActiveTab] = useState(1);
+
+  useEffect(()=> {
+    setNotepadData(notepadDataset)
+  }, [])
 
   const styles = {
     desktop: {
@@ -68,6 +78,12 @@ function Notepad({openApp, setOpenApps}) {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
+    },
+    tabtitle: {
+      outline: 'none',
+      border: 'none',
+      cursor: 'text',
+      backgroundColor: 'transparent'
     },
     addtab: {
       width: '10px',
@@ -134,6 +150,21 @@ function Notepad({openApp, setOpenApps}) {
     
   };
 
+  const AddTab = () => {
+    setNotepadData([
+      ...notepadData,
+      {
+        id:4,
+        tabTitle: "Untitled",
+        messageContent: ""
+      }
+    ])
+  }
+
+  const changeTabTitle = (e) => {
+    setTabTitle(e.target.value);
+  }
+
   const countCharacters = (e) => {
     setValue(e.target.value);
     setTextLength(value.length);
@@ -180,6 +211,8 @@ function Notepad({openApp, setOpenApps}) {
     e.target.classList.remove('dragging');
   };
 
+  const currentTab = notepadData.find(tab => tab.id === activeTab);
+
   return (
     <div
     style={styles.desktop}
@@ -196,15 +229,26 @@ function Notepad({openApp, setOpenApps}) {
       <div style={styles.containerFlex}>
         <div style={styles.titlebar}>
           <div style={styles.notepadlogo}></div>
-          <div style={styles.tab}>
-            <div>Untitled</div>
-            <div>✖</div>
-          </div>
-          <div style={styles.tab}>
-            <div>New Note</div>
-            <div>✖</div>
-          </div>
-          <div style={styles.addtab}>✚</div>
+          
+          {notepadData.map((item, id)=>(
+              <div 
+              isActive={item.id === activeTab}
+              onClick={()=>setActiveTab(item.id)}          
+              style={{
+                ...styles.tab,
+                backgroundColor: item.id === activeTab ? "#3b3b3b" : "#2c2c2c",
+  }}>
+              <NotepadTab
+                key={id}
+                item={item}
+              /><div>✖</div>
+</div>
+           ))}
+          
+          <div 
+          style={styles.addtab}
+          onClick={AddTab}
+          >✚</div>
           <div style={styles.screencontrols}>
             <div onClick={minimizeNotepad}>🗕</div>
             <div onClick={maximizeNotepad}>🗖</div>
@@ -217,9 +261,10 @@ function Notepad({openApp, setOpenApps}) {
           <div>View</div>
         </div>
         <div style={styles.textcontainer}>
+        
+        <NotepadContent tab={currentTab}/>
           <textarea
             style={styles.textarea}
-            onChange={countCharacters}
             value={value}
           />
         </div>
