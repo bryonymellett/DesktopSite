@@ -9,6 +9,8 @@ function App() {
   const [desktopMenu, showDesktopMenu] = useState(false);
   const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
   const [wallpaperPath, setWallpaperPath] = useState('./src/assets/Wallpapers/Whale.jpg');
+  const [openApps, setOpenApps] = useState([]);
+  
 
   const [appList, setAppList] = useState(apps)
 
@@ -40,22 +42,35 @@ function App() {
   return (
     <>
       <div style={styles.background} className="desktopbg">
-      {/* <Notepad /> */}
 
+    {/* background and right-click options */}
       <div 
-      className="desktopcontainer"
-      onContextMenu={handleRightClick}
+        className="desktopcontainer"
+        onContextMenu={handleRightClick}
       >
+
       {desktopMenu && <DesktopRCMenu mousePosition={mousePosition} selectWallpaper={selectWallpaper}/>}
+     <div className="windowLayer">
+    {openApps.map(app => {
+      const AppComponent = app.component;
+      return <AppComponent key={app.name} setOpenApps={setOpenApps}/>;
+    })}
+  </div>
+
       {appList.map((app, id)=>(
-        <DesktopIcon key={id} app={app}/>
+        <DesktopIcon 
+          key={id} 
+          app={app} 
+          setOpenApps={setOpenApps}/>
       ))}
+
+     
       
 
     
         </div>
       </div>
-      <Taskbar />
+      <Taskbar openApps={openApps} />
      
     </>
   )

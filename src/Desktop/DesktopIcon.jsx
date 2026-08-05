@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import Notepad from "../Apps/Notepad/Notepad";
 
-function DesktopIcon({app}) {
-    const [appOpened, setAppOpened] = useState(false)
+function DesktopIcon({app, setOpenApps}) {
 
     const openApp = () => {
-        setAppOpened(current => !current)
+        
+        setOpenApps(prev =>
+        prev.some(a => a.name === app.name)
+            ? prev
+            : [...prev, app]
+
+    );
     }
 
     const AppComponent=app.component;
@@ -16,6 +21,7 @@ function DesktopIcon({app}) {
           height: '80px',
           padding: '0px',
           justifyContent: 'center',
+          zIndex: '1'
     
         },
         iconcontainer: {
@@ -56,8 +62,7 @@ function DesktopIcon({app}) {
                     </div>
                 </div>
         </div>
-        {/* {appOpened && "You've opened the app!"} */}
-        {appOpened && <AppComponent openApp={openApp}/>}
+      
         </>
     )
 }

@@ -11,3 +11,16 @@ git push
 //TO ADD
 -mouse
 -fishtank
+calculator
+to do list
+calendar with fun dates
+clock
+paint
+terminal
+is it david attenborough?
+// Tamagotchi
+
+
+
+
+rfce

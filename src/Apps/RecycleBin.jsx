@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Notepad({openApp, setOpenApps}) {
+function RecycleBin({openApp, setOpenApps}) {
   const [isOpen, setisOpen] = useState(0)
   const [value, setValue] = useState("");
   const [textLength, setTextLength] = useState(0);
@@ -23,8 +23,8 @@ function Notepad({openApp, setOpenApps}) {
       visibility: isMinimized ? "hidden" : "visible",
     }, 
     container: {
-      width: isMaximized ? '100vw' : '550px',
-      height: isMaximized ? '100vh' : '700px',
+      width: isMaximized ? '100vw' : '720px',
+      height: isMaximized ? '100vh' : '550px',
       backgroundColor: '#202020',
       borderRadius: isMaximized ? '0px' : '10px',
       border: '1px solid rgba(128, 128, 128, 0.322)',
@@ -46,13 +46,14 @@ function Notepad({openApp, setOpenApps}) {
       alignItems: 'flex-end',
       gap: '10px',
     },
-    notepadlogo: {
+    logo: {
           width: '20px',
           height: '20px',
-          backgroundImage: `url('./src/assets/DesktopIcons/NewPage.png')`,
+          backgroundImage: `url('./src/assets/DesktopIcons/RecycleBin.png')`,
           backgroundSize: 'contain',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          margin: '0px 0px 8px 10px'
     },
     tab: {
       width: '135px',
@@ -96,7 +97,7 @@ function Notepad({openApp, setOpenApps}) {
       cursor: 'pointer'
     },
     toolbar: {
-      height: '38px',
+      height: '45px',
       width: '100%',
       backgroundColor: '#2c2c2c',
       alignContent: 'center',
@@ -105,32 +106,58 @@ function Notepad({openApp, setOpenApps}) {
       display: 'flex',
       flexDirection: 'row',
       gap: '20px',
+      borderBottom: '1px solid rgba(128, 128, 128, 0.32)',
     },
-    textcontainer: {
-      backgroundColor: '#272727',
+    searchbar: {
+      backgroundColor: '#8080802f',
+      height: '30px',
+      width: '400px',
+      borderRadius: '5px',
+      marginLeft: '200px',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: '0px 0px 0px 10px'
+    },
+    foldercontainer: {
+      backgroundColor: 'hsl(0%, 0%, 10%)',
       height: '83%',
       width: '100%',
+      display: "flex",
     },
-    textarea: {
-      width: '95%',
-      height: '10%',
-      outline: 'none',
-      padding: '15px',
-      backgroundColor: 'transparent',
-      borderWidth: '0',
-      resize: 'none',
-      textAlignVertical: 'top',
-      fontSize: '15px',
+    sidebarpanel: {
+      width: "160px",
+      height: "95%",
+      backgroundColor: "#252525",
+      borderRight: '1px solid rgba(128, 128, 128, 0.322)',
+      padding: "10px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "6px",
     },
-    footer: {
-      height: '20px',
-      width: '100%',
-      backgroundColor: '#2c2c2c',
-      fontSize: '11px',
-      margin: '15px 0px 0px 0px',
-
+    sidebarItem: {
+      padding: "8px 10px",
+      borderRadius: "5px",
+      cursor: "pointer",
+      fontSize: "14px",
     },
-    
+    filePane: {
+      flex: 1,
+      backgroundColor: "#1e1e1e",
+      padding: "16px",
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, 90px)",
+      alignContent: "start",
+      gap: "18px",
+      marginLeft: "8px",
+    },
+    file: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "8px",
+      cursor: "pointer",
+    },
     
   };
 
@@ -195,16 +222,11 @@ function Notepad({openApp, setOpenApps}) {
     >
       <div style={styles.containerFlex}>
         <div style={styles.titlebar}>
-          <div style={styles.notepadlogo}></div>
+          <div style={styles.logo}></div>
           <div style={styles.tab}>
-            <div>Untitled</div>
+            <div>Recycle Bin</div>
             <div>✖</div>
           </div>
-          <div style={styles.tab}>
-            <div>New Note</div>
-            <div>✖</div>
-          </div>
-          <div style={styles.addtab}>✚</div>
           <div style={styles.screencontrols}>
             <div onClick={minimizeNotepad}>🗕</div>
             <div onClick={maximizeNotepad}>🗖</div>
@@ -212,22 +234,37 @@ function Notepad({openApp, setOpenApps}) {
           </div>
         </div>
         <div style={styles.toolbar}>
-          <div>File</div>
-          <div>Edit</div>
-          <div>View</div>
+          <div style={styles.searchbar}>Search</div>
+          <div></div>
+          <div></div>
         </div>
-        <div style={styles.textcontainer}>
-          <textarea
-            style={styles.textarea}
-            onChange={countCharacters}
-            value={value}
-          />
+        <div style={styles.foldercontainer}>
+          <div style={styles.sidebarpanel}>
+          <div style={styles.sidebarItem}>🏠 Home</div>
+          <div style={styles.sidebarItem}>🖥️ Desktop</div>
+          <div style={styles.sidebarItem}>📄 Documents</div>
+          <div style={styles.sidebarItem}>📷 Pictures</div>
+          <div style={styles.sidebarItem}>🎵 Music</div>
+          <div style={styles.sidebarItem}>🎬 Videos</div>
+          <div style={styles.sidebarItem}>🗑️ Recycle Bin</div>
         </div>
-        <div style={styles.footer}>{textLength} characters</div>
-      </div>
+
+        <div style={styles.filePane}>
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} style={styles.file}>
+              <div style={styles.icon}></div>
+              <span style={styles.fileName}>
+                Apple core {i + 1}
+              </span>
+            </div>
+          ))}
+        </div>
+        </div>
+             <div style={styles.footer}></div>
+        </div>
     </div>
     </div>
   );
 }
 
-export default Notepad;
+export default RecycleBin;

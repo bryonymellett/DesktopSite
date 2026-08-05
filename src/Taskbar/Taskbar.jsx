@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Taskbar() {
+function Taskbar({openApps}) {
     
     const styles = {
         taskbar: {
@@ -35,12 +35,25 @@ function Taskbar() {
         <div style={styles.tray}>
             <div 
             style={styles.trayicon}
-            className="windowsicon"
-   
-            >Start                            
+            className="windowsicon">Start                            
             </div>
             <div style={styles.trayicon}>ppp</div>
             <div style={styles.trayicon}>qqq</div>
+            
+            <div>{openApps.map(app => (
+                <img
+                    key={app.name}
+                    src={app.image}
+                    alt={app.name}
+                    style={{
+                        width: "24px",
+                        height: "24px",
+                        margin: "0 4px"
+                    }}
+                />
+            ))}
+            </div>
+
 
         </div>
 

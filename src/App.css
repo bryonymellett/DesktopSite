@@ -116,4 +116,14 @@
     border: 10px solid rgba(37, 37, 37, 0.281);
 
   }
+  .windowLayer {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    pointer-events: none;
+}
+
+.windowLayer > * {
+    pointer-events: auto;
+}
 
